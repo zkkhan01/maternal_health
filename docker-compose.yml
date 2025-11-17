@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  bloomguard-api:
+    build: .
+    ports:
+      - "8020:8020"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
