@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>Maternal Health Chat</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #chat { border: 1px solid #ccc; padding: 10px; height: 400px; overflow: auto; }
+    .msg { margin-bottom: 10px; }
+    .you { color: #0b76ff; }
+    .bot { color: #333; }
+  </style>
+</head>
+<body>
+  <h2>Maternal Health Chatbot</h2>
+  <div id="chat"></div>
+  <input id="msg" placeholder="Ask about maternal health..." style="width:70%" />
+  <button id="send">Send</button>
+
+  <script>
+    async function send(){
+      const input = document.getElementById('msg');
+      const text = input.value;
+      if(!text) return;
+      const chat = document.getElementById('chat');
+      chat.innerHTML += '<div class="msg you"><b>You:</b> ' + text + '</div>';
+      input.value = '';
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({message: text})
+      });
+      const data = await res.json();
+      chat.innerHTML += '<div class="msg bot"><b>Bot:</b> ' + data.reply + '</div>';
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    document.getElementById('send').addEventListener('click', send);
+    document.getElementById('msg').addEventListener('keydown', function(e){
+      if(e.key === 'Enter') send();
+    });
+  </script>
+</body>
+</html>

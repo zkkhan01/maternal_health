@@ -1,13 +1,11 @@
 FROM python:3.11-slim
 
 WORKDIR /app
+COPY . /app
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Expose port for FastAPI
+EXPOSE 8000
 
-COPY . .
-
-ENV PORT=8020
-EXPOSE 8020
-
-CMD ["uvicorn", "backend.app.main:app", "--host", "0.0.0.0", "--port", "8020"]
+# Note: In production start Pathway separately or run a process manager to run both services.
+CMD ["uvicorn", "app.server.api:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,0 +1,4 @@
+Maternal health overview:
+- Regular prenatal care is associated with improved maternal and neonatal outcomes.
+- Hypertension in pregnancy should be monitored closely. Severe hypertension is systolic >= 140 mmHg or diastolic >= 90 mmHg.
+- If symptoms such as severe headache, visual changes, or abdominal pain occur, seek urgent care.

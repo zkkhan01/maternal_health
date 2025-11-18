@@ -1,5 +1,7 @@
 fastapi
-uvicorn
-pydantic
-python-dotenv
+uvicorn[standard]
 pathway
+pathway-xpack-llm
+sentence-transformers
+pydantic
+paddleocr
