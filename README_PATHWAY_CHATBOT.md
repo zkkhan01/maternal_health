@@ -29,3 +29,6 @@ This repository is your original maternal_health project enhanced with a Pathway
 
 ## Requirements file
 See `requirements.txt` for Python dependencies. Install them in a virtual env.
+
+
+Updated: connector now implements ConnectorSubject and exposes read_simulated_stream().
